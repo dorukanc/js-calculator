@@ -41,7 +41,7 @@ keypad.addEventListener('click', function(event){
         if(data.operator !== ''){
             data.num1 = operate(data.num1, data.num2, data.operator);
             display.textContent = data.num1;
-            val.dataset.value === 'equal' || function(){ data.operator = val.dataset.value; };
+            data.operator = val.dataset.value;
             console.log(data);
         }else{
             data.operator = val.dataset.value;
@@ -59,16 +59,21 @@ function operate(num1, num2, operator){
     switch(operator){
         case 'add':
             return add(num1, num2);
-            break;
         case 'subtract':
             return subtract(num1, num2);
-            break;
         case 'multiply':
             return multiply(num1, num2);
-            break;
         case 'divide':
             return divide(num1, num2);
-            break;
+        case 'equal':
+            return num1;
+        case 'ac':
+            data = {
+            'num1': '',
+            'num2': '',
+            'operator': '',
+            }
+            return '';
     }
 }
 
