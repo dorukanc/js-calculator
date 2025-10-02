@@ -18,8 +18,9 @@ const display = document.getElementById("display");
 const keypad = document.querySelector(".keypad");
 
 keypad.addEventListener('click', function(event){
-    const digit = event.target.dataset.value;
-    display.textContent += digit;
+    if (event.target.tagName !== 'BUTTON') return;
+    const val = event.target.dataset.value;
+    display.textContent += val;
 });
 
 

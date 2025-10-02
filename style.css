@@ -9,8 +9,7 @@ body{
     flex-wrap: wrap;
     flex-direction: column;
     gap: 5px;
-    width: 100%;
-    max-width: 270px;
+    width: 270px;
     justify-content: space-around;
     align-items: center;
     border: 5px solid #CBBDE3;
@@ -34,11 +33,17 @@ body{
 }
 
 .keypad{
-    flex: 1 1 calc(20% - 5px);
-    
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+
 }
 
 button{
+    font-family: monospace;
+    font-weight: 900;
+    font-size: 24px;
     border-radius: 50%;
     height: 50px;
     width: 50px;
@@ -50,5 +55,6 @@ button{
     color: #72636E;
 }
 .operator{
-    border: 3px solid ;
+    border: 3px solid #d39c10;
+    background-color: #EFB315;
 }
