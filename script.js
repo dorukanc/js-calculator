@@ -8,6 +8,8 @@ let data = {
     'operator': '',
 }
 
+let shouldResetDisplay = false;
+
 keypad.addEventListener('click', function(event){
     if (event.target.tagName !== 'BUTTON') return;
 
@@ -27,6 +29,10 @@ keypad.addEventListener('click', function(event){
 
 
 function handleDigit(val){
+    if(shouldResetDisplay){
+        display.textContent = '';
+        shouldResetDisplay = false;
+    }
     display.textContent += val.dataset.value;
     if(data.operator !== ''){
         data.num2 = parseFloat(display.textContent);
@@ -41,11 +47,11 @@ function handleOperator(val){
     if(data.operator !== ''){
         data.cache = operate(data.num1, data.num2, data.operator);
         display.textContent = data.cache;
-        console.log(data);
         data.num1 = data.cache;
         data.num2 = '';
         data.cache = '';
         data.operator = val.dataset.value;
+        shouldResetDisplay = true;
         console.log(data);
     }else{
         data.operator = val.dataset.value;
@@ -61,6 +67,7 @@ function handleEquals(val){
     data.num2 = '';
     data.cache = '';
     data.operator = '';
+    shouldResetDisplay = true;
     console.log(data);
 }
 
@@ -72,6 +79,7 @@ function handleClear(val){
         'operator': '',
     };
     display.textContent = '';
+    shouldResetDisplay = false;
     console.log(data);
 }
 
