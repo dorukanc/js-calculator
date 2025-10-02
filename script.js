@@ -14,11 +14,20 @@ function divide(a,b){
     return a/b;
 }
 
+const display = document.getElementById("display");
+const keypad = document.querySelector(".keypad");
+
+keypad.addEventListener('click', function(event){
+    const digit = event.target.dataset.value;
+    display.textContent += digit;
+});
+
 
 function operate(num1, num2, operator){
     switch(operator){
         case 'add':
             // add the numbers and update the display
+            display.textContent = add(num1, num2);
             break;
         case 'subtract':
 
